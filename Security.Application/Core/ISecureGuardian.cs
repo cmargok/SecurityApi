@@ -1,6 +1,5 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using Security.Infrastructure.Models.Security;
+﻿using Microsoft.AspNetCore.Identity;
+using Security.Application.Models.Security;
 
 namespace Security.Application.Core
 {

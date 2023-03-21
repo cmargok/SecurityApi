@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Security.Infrastructure.Persistence.Configurations.Security
+namespace Security.Application.Models.Security
 {
     public class ApiUser : IdentityUser
     {

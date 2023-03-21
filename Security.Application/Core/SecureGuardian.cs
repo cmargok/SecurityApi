@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Security.Infrastructure.Models.Security;
-using Security.Infrastructure.Persistence.Configurations.Security;
+using Security.Application.Models.Security;
 
 namespace Security.Application.Core
 {
@@ -16,7 +15,7 @@ namespace Security.Application.Core
             _userManager = userManager;
         }
 
-       
+
         public async Task<IEnumerable<IdentityError>> Register(ApiUserDto apiuser)
         {
             var user = _mapper.Map<ApiUser>(apiuser);

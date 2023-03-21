@@ -1,4 +1,4 @@
-﻿namespace Security.Infrastructure.Models.RegisterDtos
+﻿namespace Security.Application.Models.RegisterDtos
 {
     public class UserResponseSuccess
     {

@@ -1,8 +1,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Security.Application.Core;
-using Security.Infrastructure.Models.RegisterDtos;
-using Security.Infrastructure.Models.Security;
+using Security.Application.Models.RegisterDtos;
+using Security.Application.Models.Security;
 
 namespace Security.API.Controllers
 {
@@ -39,11 +39,11 @@ namespace Security.API.Controllers
                 return BadRequest(ErrorsRegisters);
             }
 
-            return Ok(new UserResponseSuccess { RegisterStatus = "Success", User = apiUserDto.UserName });
-
-
-
+            return Ok();//new UserResponseSuccess { RegisterStatus = "Success", User = apiUserDto.UserName });
 
         }
+
+
+       
     }
 }

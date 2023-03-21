@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Infrastructure", "03_Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_Domain", "04_Domain", "{ABAA45FC-8A87-402C-B1A0-AFE125F363E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.API", "Security.API\Security.API.csproj", "{1B20D63B-7E94-4372-A4A7-BB71F9732C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.API", "Security.API\Security.API.csproj", "{1B20D63B-7E94-4372-A4A7-BB71F9732C9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Application", "Security.Application\Security.Application.csproj", "{B6923726-1E76-44FF-852D-FD32BE6D8273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Application", "Security.Application\Security.Application.csproj", "{B6923726-1E76-44FF-852D-FD32BE6D8273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Infrastructure", "Security.Infrastructure\Security.Infrastructure.csproj", "{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Infrastructure", "Security.Infrastructure\Security.Infrastructure.csproj", "{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Domain", "Security.Domain\Security.Domain.csproj", "{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Domain", "Security.Domain\Security.Domain.csproj", "{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

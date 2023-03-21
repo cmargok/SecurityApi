@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Security.API.Configurations;
 using Security.Application.Core;
+using Security.Application.Models.Security;
 using Security.Infrastructure.Persistence;
-using Security.Infrastructure.Persistence.Configurations.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +32,7 @@ builder.Services.AddAuthorizationBuilder()
 
 //adding services
 
-builder.Services.AddScoped<ISecureGuardian, SecureGuardian>();
+
 
 
 //adding Cors Policy**********************************************************************
@@ -48,7 +48,7 @@ builder.Services.AddCors(options =>
 
 
 
-
+builder.Services.RegisterServices();
 
 
 
