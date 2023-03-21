@@ -1,19 +1,24 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Security.API.Configurations;
-using Security.Application.Core;
 using Security.Application.Models.Security;
 using Security.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
+
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddDbContext<ApplicationDBContext>(
-    options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("SecurityDB")));
+var DbConnection = await SecretsManager.GetConnectionString(builder.Environment.IsDevelopment(), builder.Configuration);
+
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DbConnection));
+
+
 
 builder.Services.AddIdentityCore<ApiUser>()
     .AddRoles<IdentityRole>()
