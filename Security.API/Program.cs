@@ -2,19 +2,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Security.API.Configurations;
 using Security.Application.Models.Security;
+using Security.Infrastructure.Externals.Azure;
 using Security.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-// Add services to the container.
-
-
-
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-var DbConnection = await SecretsManager.GetConnectionString(builder.Environment.IsDevelopment(), builder.Configuration);
+var DbConnection = await SecretsManager.GetConnectionString(
+    builder.Environment.IsDevelopment(), 
+    builder.Configuration.GetConnectionString("Connection")!,
+    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString());
 
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DbConnection));
 
