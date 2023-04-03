@@ -38,5 +38,12 @@ namespace Security.Domain.Entities
         [Required]
         [StringLength(15)]
         public string Password { get; set; }
+
+        [Required]
+        public bool IsRegistered { get; set; }
+
+        [Required]
+        [StringLength(32)]
+        public string UserRegistrationSecretCode { get; set; }
     }
 }

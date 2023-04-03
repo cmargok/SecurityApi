@@ -19,12 +19,15 @@ namespace Security.Application.Core
         public async Task<IEnumerable<IdentityError>> Register(ApiUserDto apiuser)
         {
             var user = _mapper.Map<ApiUser>(apiuser);
+            //AQUI DEBO IR A BUSCAR LA INFORMACION EN LA TABLA PRE REGISTRO PARA COMPLETAR LOS DATOS DEL USUARIO
+
+       
 
 
             var result = await _userManager.CreateAsync(user, apiuser.Password);
 
             if (result.Succeeded)
-            {
+            { 
                 await _userManager.AddToRoleAsync(user, "User");
             }
 

@@ -6,7 +6,7 @@ namespace Security.Application.Models.Security
     {
         [Required]
         [StringLength(32)]
-        public string CodeIV { get; set; }
+        public string SecretCode { get; set; }
 
         [Required]
         [StringLength(128)]

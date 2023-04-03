@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Security.Application.Models.Security;
 using Security.Application.PreRecording;
+using Security.Domain.Templates;
+using Security.Infrastructure.Persistence.Migrations;
 
 namespace Security.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class PreRegisterController : ControllerBase
     {
@@ -17,11 +19,10 @@ namespace Security.API.Controllers
         }
 
         [HttpPost("PreRegister")]
-        public async Task<IActionResult> PreRegister(PreRegisterDto preRegister, CancellationToken token)
+        public async Task<IActionResult> PreRegister(PreRegisterDto preRegister,CancellationToken token)
         {
-
-            var result = _preRecord.PreRegistering(preRegister, token);
-
+            var result = await _preRecord.PreRegisteringAsync(preRegister, token);
+         
 
             return Ok();
 

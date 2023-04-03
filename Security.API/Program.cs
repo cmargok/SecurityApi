@@ -51,11 +51,24 @@ builder.Services.AddCors(options =>
 
 
 
-builder.Services.RegisterServices();
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddRepositories();
 
 
 
-builder.Services.AddControllers();
+
+builder.Services.AddControllers(
+    options =>
+    {
+        options.Filters.Add<CustomValidationFilterAttribute>();
+    })
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.SuppressModelStateInvalidFilter = true;
+    });
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
