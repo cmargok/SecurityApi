@@ -2,6 +2,7 @@
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.Extensions.Configuration;
 using Security.Infrastructure.IO;
+using Azure.Security.KeyVault.Keys;
 
 namespace Security.Infrastructure.Externals.Azure
 {
@@ -36,6 +37,18 @@ namespace Security.Infrastructure.Externals.Azure
             var secret = await _secretClient.GetSecretAsync(SecretName);
 
             return secret.Value.Value;
+        }
+
+        public static async Task<string> GetkeyValue(string KeyName, string KeyVaultUrlEnviroment)
+        {
+            var keyVaultEndpoint = new Uri(KeyVaultUrlEnviroment!.ToString());
+
+            var keyClient = new KeyClient(keyVaultEndpoint, new DefaultAzureCredential());
+
+            var key = await keyClient.GetKeyAsync(KeyName);
+
+            return key.Value.Key.ToString()!;
+
         }
     }
 

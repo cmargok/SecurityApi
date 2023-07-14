@@ -18,7 +18,7 @@ namespace Security.API.Controllers
             _preRecord = preRecord;
         }
 
-        [HttpPost("PreRegister")]
+        [HttpPost("InitRegistration")]
         public async Task<IActionResult> PreRegister(PreRegisterDto preRegister,CancellationToken token)
         {
             var result = await _preRecord.PreRegisteringAsync(preRegister, token);
