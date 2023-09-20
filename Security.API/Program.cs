@@ -12,7 +12,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var DbConnection = await SecretsManager.GetConnectionString(
     builder.Environment.IsDevelopment(), 
     builder.Configuration.GetConnectionString("Connection")!,
-    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString());
+    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString(), builder.Configuration["ConnectionStringSecreto"]);
 
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DbConnection));
 

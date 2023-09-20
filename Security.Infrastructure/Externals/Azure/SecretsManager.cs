@@ -9,12 +9,13 @@ namespace Security.Infrastructure.Externals.Azure
     public static class SecretsManager
     {
        // private static readonly string SecurityDB = "SecurityDbConnection";
-        public static async Task<string> GetConnectionString(bool IsDevelopment, string SecurityDB, string KeyVaultUrlEnviroment = "")
+        public static async Task<string> GetConnectionString(bool IsDevelopment, string SecurityDB, string KeyVaultUrlEnviroment = "", string z = "")
         {
             ArgumentException.ThrowIfNullOrEmpty(SecurityDB);
 
             if (IsDevelopment)
             {
+                string c = z;
                 string path = "C:\\Secrets";
 
                 var connectionString = IOReader.GetOneLineFromFile(path, SecurityDB + ".txt");

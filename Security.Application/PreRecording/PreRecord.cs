@@ -29,7 +29,7 @@ namespace Security.Application.PreRecording
                 response.Message = "user already exists in the platform";
             }
 
-           
+           // aqui tenemos que agregar esos datos la base de datos... 
             response.Response = true;
             response.Message = "Pre-registered user successfully";
             return response;

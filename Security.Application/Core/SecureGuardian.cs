@@ -21,8 +21,8 @@ namespace Security.Application.Core
             var user = _mapper.Map<ApiUser>(apiuser);
             //AQUI DEBO IR A BUSCAR LA INFORMACION EN LA TABLA PRE REGISTRO PARA COMPLETAR LOS DATOS DEL USUARIO
 
-       
 
+            string hola = "cosa";
 
             var result = await _userManager.CreateAsync(user, apiuser.Password);
 
@@ -32,6 +32,14 @@ namespace Security.Application.Core
             }
 
             return result.Errors;
+        }
+
+        public void main() {
+
+            Console.WriteLine(hola);
+
+
+
         }
 
 
