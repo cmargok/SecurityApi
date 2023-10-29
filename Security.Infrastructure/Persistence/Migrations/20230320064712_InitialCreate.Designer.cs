@@ -11,7 +11,7 @@ using Security.Infrastructure.Persistence;
 
 namespace ApiSecurity._04.Domain
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(IdentityDBContext))]
     [Migration("20230320064712_InitialCreate")]
     partial class InitialCreate
     {

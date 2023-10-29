@@ -31,7 +31,7 @@ namespace Security.Application.PreRecording
 
            // aqui tenemos que agregar esos datos la base de datos... 
             response.Response = true;
-            response.Message = "Pre-registered user successfully";
+            response.Message = "user was pre-registered successfully";
             return response;
         }
 
@@ -56,7 +56,8 @@ namespace Security.Application.PreRecording
 /*
  * primero debemos generar validacion de datos
  *verificar que no exista ni el email ni el suaurio en el sistema
- *generar el guardado del mismo en el sistema preregistro
+ *generar el guardado del mismo en el sistema preregistro haciendo hash de los valores sensibles
+ *
  *generar las claves
  *guardar las claves
  *enviar el correo de confirmacion

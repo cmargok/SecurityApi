@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Security.Infrastructure.Persistence.Configurations.Security;
 using System.Text;
@@ -34,6 +35,7 @@ namespace Security.API.Configurations
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey!)),
                 };
             });
+
         }
     }
 }

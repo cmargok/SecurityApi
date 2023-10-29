@@ -39,12 +39,25 @@ namespace Security.API.Controllers
                 }
                 return BadRequest(ErrorsRegisters);
             }
+            //se debe procesar un mensaje de respuesta y un correo de confirmacion de registrro en el sistema.
+
 
             return Ok();//new UserResponseSuccess { RegisterStatus = "Success", User = apiUserDto.UserName });
 
         }
 
 
-       
+       //todo
+       /*
+        *falta generar un endpoint para logearse, que permita 3 re intentos, si no se bloquea por 24 horas.
+        *este endpoint debe retornar un JWT de autorizacion para usar los demas sistemas..
+        *
+        *tambien falta terminar la implementacion del api de log, para poder generar la libreria yusarla en los diferentes sistemas. 
+        *falta crear un api que sirva como  consumidor, ya que la libriera de log enviara los logs por rabbbitmq a la ocla descrita
+        *el api de log consumira el log y lo guardara en algun servicio q se deestine para ello, la idea es usar elastichsearch o seq.
+        *
+        *falta terminar el api de notificaciones
+        */
+
     }
 }

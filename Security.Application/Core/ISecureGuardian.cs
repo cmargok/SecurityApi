@@ -5,6 +5,6 @@ namespace Security.Application.Core
 {
     public interface ISecureGuardian
     {
-        public Task<IEnumerable<IdentityError>> Register(ApiUserDto apiuser);
+        public Task<object> Register(ApiUserDto apiuser);
     }
 }

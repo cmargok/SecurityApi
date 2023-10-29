@@ -11,12 +11,13 @@ namespace Security.Infrastructure.Persistence.Repositories
 {
     public class PreRegisterRepository : IPreRegisterRepository
     {
-        private readonly ApplicationDBContext _dbContext;
+        private readonly IdentityDBContext _dbContext;
 
-        public PreRegisterRepository(ApplicationDBContext dbContext)
+        public PreRegisterRepository(IdentityDBContext dbContext)
         {
             _dbContext = dbContext;
         }
+
         public async Task<bool> CheckIfExistsAsync(string Email, string UserName, CancellationToken cancellationToken)
         {
            var exist = await _dbContext.PreRegisters.AnyAsync(r => r.UserName == UserName && r.Email == Email, cancellationToken);

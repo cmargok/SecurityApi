@@ -2,28 +2,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Security.API.Configurations;
 using Security.Application.Models.Security;
-using Security.Infrastructure.Externals.Azure;
 using Security.Infrastructure.Persistence;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-var DbConnection = await SecretsManager.GetConnectionString(
-    builder.Environment.IsDevelopment(), 
-    builder.Configuration.GetConnectionString("Connection")!,
-    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString(), builder.Configuration["ConnectionStringSecreto"]);
+//var DbConnection = await SecretsManager.GetConnectionString(builder.Environment.IsDevelopment(),  builder.Configuration.GetConnectionString("Connection")!,
+//    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString(), builder.Configuration["ConnectionStringSecreto"]);
 
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DbConnection));
+builder.Services.AddDbContext<IdentityDBContext>(
+    options => options.UseSqlServer(Environment.GetEnvironmentVariable("SecutiryDb")
+    //   ,bv => bv.MigrationsAssembly(typeof(IdentityDBContext).Assembly.FullName)
+    ));
 
-
-
-builder.Services.AddIdentityCore<ApiUser>()
-    .AddRoles<IdentityRole>()
-    .AddTokenProvider<DataProtectorTokenProvider<ApiUser>>(builder.Configuration["JwtSettings:Issuer"]!)
-    .AddEntityFrameworkStores<ApplicationDBContext>()
+builder.Services.AddIdentityCore<ApiUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+    .AddTokenProvider<DataProtectorTokenProvider<ApiUser>>(builder.Configuration["JwtSettings:Issuer"]!)   
+    .AddEntityFrameworkStores<IdentityDBContext>()
     .AddDefaultTokenProviders();
-
 
 builder.Services.ConfigureJwtAuthentication(builder.Configuration);
 
@@ -83,6 +80,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
+
+//app.UseAuthentication();
 
 app.UseAuthorization();
 

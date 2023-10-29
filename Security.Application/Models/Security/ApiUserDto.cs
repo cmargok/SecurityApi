@@ -6,11 +6,11 @@ namespace Security.Application.Models.Security
     {
         [Required]
         [StringLength(32)]
-        public string SecretCode { get; set; }
+        public string SecretCode { get; set; } = string.Empty;
+
 
         [Required]
-        [StringLength(128)]
-        public string AccessCode { get; set; }
+        public string Username { get; set; } = string.Empty;
 
     }
 }
