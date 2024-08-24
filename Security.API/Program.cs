@@ -7,7 +7,6 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 //var DbConnection = await SecretsManager.GetConnectionString(builder.Environment.IsDevelopment(),  builder.Configuration.GetConnectionString("Connection")!,
 //    Environment.GetEnvironmentVariable("KeyVaultUrl")!.ToString(), builder.Configuration["ConnectionStringSecreto"]);

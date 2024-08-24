@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Domain", "Security.Domain\Security.Domain.csproj", "{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSecure.Api", "RedSecure.Api\RedSecure.Api.csproj", "{FF0C3BE0-A173-454C-A7E0-72809BEF1739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSecure.Application", "RedSecure.Application\RedSecure.Application.csproj", "{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,14 @@ Global
 		{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA6E2FF6-4518-4C66-8368-3CE0AA35087C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

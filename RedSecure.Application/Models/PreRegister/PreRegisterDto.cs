@@ -1,7 +1,7 @@
-﻿using Security.Domain.Validations.Annotations;
+﻿using RedSecure.Application.Validations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace Security.Application.Models.Security
+namespace RedSecure.Application.Models.PreRegister
 {
     public class PreRegisterDto : ApiUserLoginDto
     {

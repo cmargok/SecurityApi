@@ -1,7 +1,7 @@
-﻿using Security.Domain.Validations.Annotations;
+﻿using RedSecure.Application.Validations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace Security.Application.Models.Security
+namespace RedSecure.Application.Models.Shared
 {
     public class ApiUserLoginDto
     {
@@ -11,7 +11,7 @@ namespace Security.Application.Models.Security
         public required string Email { get; set; }
 
         [Required]
-        [PasswordPolity]
+        [PasswordPolicy]
         [StringLength(15, ErrorMessage = "Your password is limited to {2} to {1} characters", MinimumLength = 6)]
         public required string Password { get; set; }
 

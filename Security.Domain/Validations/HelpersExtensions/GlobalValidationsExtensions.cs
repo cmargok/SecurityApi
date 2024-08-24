@@ -1,9 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Security.Domain.Validations.HelpersExtensions
 {
@@ -11,7 +6,8 @@ namespace Security.Domain.Validations.HelpersExtensions
     {
         public static void CheckNull<T>(T obj)
         {
-            if (obj is null) throw new ArgumentNullException(nameof(obj));
+            if (obj is null) 
+                throw new ArgumentNullException(nameof(obj));
         }
 
         /// <summary>

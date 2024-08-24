@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Security.Application.Models.Security;
 using Security.Application.PreRecording;
-using Security.Domain.Templates;
-using Security.Infrastructure.Persistence.Migrations;
 
 namespace Security.API.Controllers
 {
@@ -20,7 +17,7 @@ namespace Security.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("InitRegistration")]
+        [HttpPost("initRegistration")]
         public async Task<IActionResult> PreRegister(PreRegisterDto preRegister,CancellationToken cancellationToken)
         {
             var result = await _preRecord.PreRegisteringAsync(preRegister, cancellationToken);         

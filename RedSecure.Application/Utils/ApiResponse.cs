@@ -1,12 +1,11 @@
-﻿namespace Security.Application.Models
+﻿namespace RedSecure.Application.Utils
 {
     public class ApiResponse<T>
     {
-        public T Response { get; set; }
+        public T? Value { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
-        public int Status { get; set; }
+        public bool Error { get; set; }
 
     }
-  
 }
