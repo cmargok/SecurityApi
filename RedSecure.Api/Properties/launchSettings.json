@@ -5,28 +5,12 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SecurityDb": "Server=localhost,1433; Initial Catalog=CmargokSecurityApiDB; Persist Security Info=True; User ID=sa;Password=Dikelu0102@1; MultipleActiveResultSets=True; TrustServerCertificate=true; Encrypt=True;",
+        "CryptoSettings": "[G[=4-&UytSpvW.Zh5OiRhNdfPSpEv;ns4v"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5288"
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Container (Dockerfile)": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "environmentVariables": {
-        "ASPNETCORE_HTTP_PORTS": "8080"
-      },
-      "publishAllPorts": true,
-      "useSSL": false
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",

@@ -1,13 +1,15 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RedSecure.Application.Contracts;
+using RedSecure.Application.Contracts.UseCases;
 using RedSecure.Application.Models.PreRegister;
-using RedSecure.Application.Models.Shared;
+using RedSecure.Domain.Utils;
 
 namespace RedSecure.Api.Controllers
 {
     [ApiController]
     [Route("api/v1/pre-register")]
+    [Produces("application/json")]
+    [Consumes("application/json")]
     public class PreRegisterController : ControllerBase
     {
         private readonly IPreRegistrationHandler _preRegistrationHandler;
@@ -19,7 +21,10 @@ namespace RedSecure.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("initRegistration")]
-        public async Task<IActionResult> PreRegistrationAsync(PreRegisterDto preRegister, CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+ 
+        public async Task<IActionResult> PreRegistrationAsync([FromBody] PreRegisterDto preRegister, CancellationToken cancellationToken)
         {
             var result = await _preRegistrationHandler.PreRegistrationAsync(preRegister, cancellationToken);
 
@@ -27,7 +32,6 @@ namespace RedSecure.Api.Controllers
                 return BadRequest(result);
 
             return Ok(result);
-
         }
     }
 

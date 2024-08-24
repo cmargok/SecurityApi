@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace RedSecure.Application.Validations.Attributes
+namespace RedSecure.Domain.Validations.Attributes
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class JustNumbers : ValidationAttribute
@@ -11,7 +11,7 @@ namespace RedSecure.Application.Validations.Attributes
         {
             if (value is not null and string values)
             {
-                if (Regex.IsMatch(values, Pattern)) 
+                if (Regex.IsMatch(values, Pattern))
                     return true;
             }
             return false;

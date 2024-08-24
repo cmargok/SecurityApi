@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.Options;
 using Security.Application.Models.Security;
 using Security.Domain.Entities;
-using Security.Infrastructure.Persistence;
 using Security.Infrastructure.Persistence.Configurations.Security;
 
 namespace Security.Infrastructure.Persistence

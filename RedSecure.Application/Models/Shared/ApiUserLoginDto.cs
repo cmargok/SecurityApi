@@ -1,4 +1,4 @@
-﻿using RedSecure.Application.Validations.Attributes;
+﻿using RedSecure.Domain.Validations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace RedSecure.Application.Models.Shared
@@ -12,7 +12,7 @@ namespace RedSecure.Application.Models.Shared
 
         [Required]
         [PasswordPolicy]
-        [StringLength(15, ErrorMessage = "Your password is limited to {2} to {1} characters", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "Your password is limited from {2} to {1} characters", MinimumLength = 6)]
         public required string Password { get; set; }
 
     }

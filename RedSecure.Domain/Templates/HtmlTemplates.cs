@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-
-namespace Security.Domain.Templates
+﻿namespace RedSecure.Domain.Templates
 {
-    public  class HtmlTemplates
+    public class HtmlTemplates
     {
         private static string HtmlBody = @"<!DOCTYPE html>
                                 <html>
@@ -31,7 +24,7 @@ namespace Security.Domain.Templates
                                     <p>Cmargok Security System.</p>
                                 </body>
 
-                                </html>";  
+                                </html>";
 
         public static string GetPreRegisterTemplate()
         {

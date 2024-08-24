@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Security.API.Configurations;
 using Security.Application.Models.Security;
 using Security.Infrastructure.Persistence;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +30,7 @@ builder.Services.AddAuthorizationBuilder()
 
 //adding services
 
-
+    
 
 
 //adding Cors Policy**********************************************************************

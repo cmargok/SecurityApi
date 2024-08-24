@@ -1,4 +1,5 @@
-﻿using RedSecure.Application.Validations.Attributes;
+﻿using RedSecure.Application.Models.Shared;
+using RedSecure.Domain.Validations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace RedSecure.Application.Models.PreRegister

@@ -1,4 +1,4 @@
-﻿namespace RedSecure.Application.Utils
+﻿namespace RedSecure.Domain.Utils
 {
     public static class Response
     {
@@ -6,7 +6,7 @@
         {
             return new ApiResponse<T>()
             {
-                Value = value,
+                Values = value,
                 Title = title,
                 Message = message,
                 Error = false
@@ -18,7 +18,7 @@
         {
             return new ApiResponse<T>()
             {
-                Value = value,
+                Values = value,
                 Title = title,
                 Message = message,
                 Error = true
@@ -26,4 +26,5 @@
 
         }
     }
+
 }

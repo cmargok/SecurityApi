@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 
-namespace Security.Application.Models.Security
+namespace RedSecure.Application.Models.Security
 {
     public class ApiUser : IdentityUser
     {

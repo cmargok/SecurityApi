@@ -5,15 +5,23 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <NoWarn>1591</NoWarn>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RedSecure.Application\RedSecure.Application.csproj" />
+    <ProjectReference Include="..\RedSecure.Infrastructure\RedSecure.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations\Modules\Correlation\" />
+    <Folder Include="Configurations\Modules\Authentication\" />
   </ItemGroup>
 
 </Project>

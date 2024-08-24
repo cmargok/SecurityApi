@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace Security.Domain.Validations.Annotations
+namespace Security.Domain.Validations.Attribute
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class JustNumbers : ValidationAttribute
