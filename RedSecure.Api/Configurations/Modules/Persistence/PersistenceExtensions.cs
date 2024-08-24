@@ -21,9 +21,9 @@ namespace RedSecure.Api.Configurations.Modules.Persistence
             //   ,bv => bv.MigrationsAssembly(typeof(IdentityDBContext).Assembly.FullName)
             );
 
-            services.AddIdentityCore<ApiUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDBContext>();
+            services.AddIdentity<ApiUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDBContext>()
+                .AddDefaultTokenProviders();
 
             services.AddRepositories();
             return services;

@@ -26,19 +26,20 @@ namespace Security.API.Controllers
         public async Task<IActionResult> RegisterEndpoints(ApiUserDto apiUserDto, CancellationToken token)
         {
 
-            //debemos crear en el _Secure un metodo para validar el token que generaremos con toda la informacoin necesaria para  poder registrarlo en el sistema
+            //debemos crear en el _Secure un metodo para validar el token que generaremos con toda la informacoin necesaria para
+            //poder registrarlo en el sistema
             //si todo se valida bien ahi si llamamos al metodo register para traer los datos dele preregistro y traerlos
             var errors = await _Secure.Register(apiUserDto);
 
-            if (errors.Any())
-            {
-                var ErrorsRegisters = new ErrorRegister();
-                foreach (var error in errors)
-                {
-                    ErrorsRegisters.AddError(error.Code, error.Description);
-                }
-                return BadRequest(ErrorsRegisters);
-            }
+            //if (errors.Any())
+            //{
+            //    var ErrorsRegisters = new ErrorRegister();
+            //    foreach (var error in errors)
+            //    {
+            //        ErrorsRegisters.AddError(error.Code, error.Description);
+            //    }
+            //    return BadRequest(ErrorsRegisters);
+            //}
             //se debe procesar un mensaje de respuesta y un correo de confirmacion de registrro en el sistema.
 
 

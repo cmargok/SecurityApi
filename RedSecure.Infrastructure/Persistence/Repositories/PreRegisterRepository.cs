@@ -33,11 +33,21 @@ namespace RedSecure.Infrastructure.Persistence.Repositories
         }
 
 
-        public async Task<PreRegister> GetRecordAsync(string Email, string UserName, CancellationToken cancellationToken = default)
+        public async Task<PreRegister> GetRecordAsync(string Email, string UserName, string secretCode, CancellationToken cancellationToken = default)
         {
-            var preRegister = await _dbContext.PreRegisters
+            var preRegister = await _dbContext.PreRegisters               
+                .Where(r => 
+                    r.UserName == UserName 
+                    && r.Email == Email 
+                    && r.UserRegistrationSecretCode == secretCode)
+                .Select(c => new PreRegister()
+                {
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    PhoneNumber = c.PhoneNumber,
+                })
                 .AsNoTracking()
-                .FirstOrDefaultAsync(r => r.UserName == UserName && r.Email == Email, cancellationToken);
+                .FirstOrDefaultAsync(cancellationToken);
 
             return preRegister!;
         }

@@ -37,11 +37,6 @@ namespace RedSecure.Domain.Entities
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(15)]
-        [Column("Password")]
-        public string Password { get; set; } = string.Empty;
-
-        [Required]
         [Column("IsRegistered")]
         public bool IsRegistered { get; set; }
 

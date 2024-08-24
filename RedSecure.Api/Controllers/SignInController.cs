@@ -1,32 +1,33 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RedSecure.Application.Contracts.UseCases;
 using RedSecure.Application.Models.PreRegister;
+using RedSecure.Application.Models.SignIn;
 using RedSecure.Domain.Utils;
 
 namespace RedSecure.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/pre-register")]
+    [Route("api/v1/sign-in")]
     [Produces("application/json")]
     [Consumes("application/json")]
-    public class PreRegisterController : ControllerBase
+    public class SignInController : ControllerBase
     {
-        private readonly IPreRegistrationHandler _preRegistrationHandler;
+        private readonly ISecureGuardian _secureGuardian;
 
-        public PreRegisterController(IPreRegistrationHandler preRecord)
+        public SignInController(ISecureGuardian secureGuardian)
         {
-            _preRegistrationHandler = preRecord;
+            _secureGuardian = secureGuardian;
         }
 
         [AllowAnonymous]
-        [HttpPost("initRegistration")]
+        [HttpPost]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
- 
-        public async Task<IActionResult> PreRegistrationAsync([FromBody] PreRegisterDRequest preRegister, CancellationToken cancellationToken)
+
+        public async Task<IActionResult> SignInAsync([FromBody] SignInRequest signInRequest, CancellationToken cancellationToken = default)
         {
-            var result = await _preRegistrationHandler.PreRegistrationAsync(preRegister, cancellationToken);
+            var result = await _secureGuardian.SignInAsync(signInRequest, cancellationToken);
 
             if (result.Error)
                 return BadRequest(result);

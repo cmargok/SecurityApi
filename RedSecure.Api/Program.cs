@@ -6,8 +6,10 @@ using RedSecure.Api.Configurations.Modules.Swagger;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddApplicationDependencies();
+
+builder.Services.AddDomainDependencies();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplicationDependencies();
 builder.Services.AddSwaggerUI();
 
 
@@ -16,7 +18,6 @@ builder.Services.AddControllers();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 

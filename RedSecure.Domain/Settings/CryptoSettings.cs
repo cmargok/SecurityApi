@@ -1,4 +1,4 @@
-﻿namespace RedSecure.Application.Models.Settings
+﻿namespace RedSecure.Domain.Settings
 {
     public class CryptoSettings
     {

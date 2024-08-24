@@ -28,8 +28,4 @@
     <ProjectReference Include="..\Security.Domain\Security.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PreRecording\" />
-  </ItemGroup>
-
 </Project>

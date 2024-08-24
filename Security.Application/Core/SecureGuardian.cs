@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Security.Application.Core
 {
-    public class SecureGuardian : ISecureGuardian
+    public class SecureGuardian 
     {
         private readonly UserManager<ApiUser> _userManager;
         private readonly SignInManager<ApiUser> _signInManager;
@@ -21,55 +21,6 @@ namespace Security.Application.Core
             _signInManager = signInManager;
         }
 
-
-       // public async Task<IEnumerable<IdentityError>> Register(ApiUserDto apiuser)
-            public async Task<object> Register(ApiUserDto apiuser)
-        {
-        
-            //AQUI DEBO IR A BUSCAR LA INFORMACION EN LA TABLA PRE REGISTRO PARA COMPLETAR LOS DATOS DEL USUARIO
-
-
-
-            var existingUser = await _userManager.FindByNameAsync(apiuser.Username);
-
-            if (existingUser != null)
-            {
-                throw new Exception("usuario ya existe");
-            }
-
-
-            var existingEmail= await _userManager.FindByEmailAsync(apiuser.Email);
-
-            if (existingEmail != null)
-            {
-                throw new Exception("email ya existe");
-            }
-
-            //como viene un secretcode
-
-            //aqui debemos verificar si es e mismo. que esta en base de datos,
-
-
-            //aqui mapeamos os dato sque legan con los deben registrarse
-
-
-            var user = _mapper.Map<ApiUser>(apiuser);
-
-
-            var result = await _userManager.CreateAsync(user, apiuser.Password);
-
-            if (!result.Succeeded)
-            {
-                //throw new Exception("el suaurio no pudo ser creado");
-                return result.Errors;
-            }
-
-            await _userManager.AddToRoleAsync(user, "User");
-
-            //determinamos que vamos a devolver para ocnfirmar que ellogin creado
-            //definir si enviamos toquen al registrarse, que no creo     
-            return true;
-        }
 
         public async Task<AuthResponse> Login(AuthRequest request) 
         {

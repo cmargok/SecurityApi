@@ -5,7 +5,7 @@ namespace RedSecure.Application.Contracts.UseCases
 {
     public interface IPreRegistrationHandler
     {
-        public Task<ApiResponse<bool>> PreRegistrationAsync(PreRegisterDto preRegister, CancellationToken cancellationToken = default);
+        public Task<ApiResponse<bool>> PreRegistrationAsync(PreRegisterDRequest preRegister, CancellationToken cancellationToken = default);
     }
 
 }
