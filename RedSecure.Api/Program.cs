@@ -1,6 +1,7 @@
 using RedSecure.Api.Configurations.Filters;
 using RedSecure.Api.Configurations.Middleware;
 using RedSecure.Api.Configurations.Modules.Authentication;
+using RedSecure.Api.Configurations.Modules.Correlation;
 using RedSecure.Api.Configurations.Modules.Injection;
 using RedSecure.Api.Configurations.Modules.Persistence;
 using RedSecure.Api.Configurations.Modules.Swagger;
@@ -13,19 +14,13 @@ builder.Services.AddDomainDependencies();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddJwt();
+builder.Services.AddCorrelationId();
 builder.Services.AddSwaggerUI();
-
-
-
 builder.Services.AddControllers(
-    options =>
-    {
-        options.Filters.Add<CustomValidationFilterAttribute>();
-    })
-    .ConfigureApiBehaviorOptions(options =>
-    {
-        options.SuppressModelStateInvalidFilter = true;
-    });
+    options => options.Filters.Add<CustomValidationFilterAttribute>())
+    .ConfigureApiBehaviorOptions(
+    options => options.SuppressModelStateInvalidFilter = true);
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddEndpointsApiExplorer();
@@ -43,5 +38,7 @@ app.UseExceptionHandler();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<CorrelationIdMiddleware>();
 
 app.Run();

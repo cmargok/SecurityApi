@@ -19,8 +19,4 @@
     <ProjectReference Include="..\RedSecure.Infrastructure\RedSecure.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configurations\Modules\Correlation\" />
-  </ItemGroup>
-
 </Project>

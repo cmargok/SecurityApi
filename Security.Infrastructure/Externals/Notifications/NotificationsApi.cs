@@ -12,7 +12,7 @@ namespace Security.Infrastructure.Externals.Notifications
         {
             this.emailSettings = emailSettings;
         }
-        public async Task<bool> SendEmailAsync(Email email)
+        /*public async Task<bool> SendEmailAsync(Email email)
         {
             var emailRequest = new EmailToSendDto()
             {
@@ -52,7 +52,7 @@ namespace Security.Infrastructure.Externals.Notifications
 
             return false;
 
-        }
+        }*/
 
     }
 
