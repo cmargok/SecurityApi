@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33513.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Infrastructure", "03_Infrastructure", "{7907A0AC-F59E-45B2-B473-8648E1E6A216}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Infrastructure", "Security.Infrastructure\Security.Infrastructure.csproj", "{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSecure.Api", "RedSecure.Api\RedSecure.Api.csproj", "{FF0C3BE0-A173-454C-A7E0-72809BEF1739}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSecure.Application", "RedSecure.Application\RedSecure.Application.csproj", "{7431A8F0-F391-4AB1-B6CE-C48EA93D9963}"
@@ -21,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF0C3BE0-A173-454C-A7E0-72809BEF1739}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D842DE1D-45D3-4CC0-AAD5-8FBCF2C5BE38} = {7907A0AC-F59E-45B2-B473-8648E1E6A216}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D20108F8-5863-4DC0-B8E9-C1C2D16953A2}
