@@ -2,20 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using RedSecure.Application.Contracts.Handlers;
 using RedSecure.Application.Models.Login;
-using RedSecure.Application.Models.Shared;
-using RedSecure.Application.UseCases.Login;
 using RedSecure.Domain.Utils;
 
 namespace RedSecure.Api.Controllers
 {
+
     [ApiController]
     [Route("api/v1/red-secure")]
     [Produces("application/json")]
     [Consumes("application/json")]
-    public class LoginController : ControllerBase
+    public class LoginController : ControllerBase 
     {
         private readonly ILoginHandler _loginHandler;
-
+     
         public LoginController(ILoginHandler loginHandler)
         {
             _loginHandler = loginHandler;

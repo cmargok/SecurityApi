@@ -1,4 +1,5 @@
 ﻿using RedSecure.Api.Configurations.Modules.Correlation;
+using RedSecure.Infrastructure.Correlation;
 
 namespace RedSecure.Api.Configurations.Middleware
 {

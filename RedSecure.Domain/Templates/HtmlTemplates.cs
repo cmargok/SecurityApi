@@ -2,7 +2,7 @@
 {
     public class HtmlTemplates
     {
-        private static string HtmlBody = @"<!DOCTYPE html>
+        private const string HtmlBody = @"<!DOCTYPE html>
                                 <html>
 
                                 <head>
@@ -11,14 +11,12 @@
                                 </head>
 
                                 <body>
-                                    <p>Gracias por iniciar el registro en nuestra plataforma
-                                        <br> Te enviamos el código de validación de ingreso y el
-                                        código IV para poder
-                                        registrarte correctamente en la plataforma:
+                                    <p>Hola {0}, gracias por iniciar el registro en nuestra plataforma
+                                        <br> Te enviamos el código de validación de ingreso para
+                                        registrarte correctamente:
                                     </p>
                                     <ul>
-                                        <li><strong>Código de validación de ingreso:</strong>{0}</li>
-                                        <li><strong>Código IV:</strong>{1}</li>
+                                        <li><strong>Código de validación de ingreso:</strong>{1}</li>
                                     </ul>
                                     <p>Gracias por tu tiempo.</p>
                                     <p>Cmargok Security System.</p>

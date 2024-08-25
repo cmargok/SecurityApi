@@ -9,7 +9,6 @@ using RedSecure.Domain.Utils.Hash;
 
 namespace RedSecure.Application.UseCases.PreRegistration
 {
-
     public class PreRegistrationHandler : IPreRegistrationHandler
     {
         private readonly IPreRegisterRepository _preRegisterRepository;
@@ -54,18 +53,16 @@ namespace RedSecure.Application.UseCases.PreRegistration
    
        
 
-        private string LoadHtmlTemplate(string Name, string CodeAccess, string CodeIV)
+        private string LoadHtmlTemplate(string Name, string CodeAccess)
         {
-            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(CodeAccess) || string.IsNullOrEmpty(CodeIV))
+            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(CodeAccess))
             {
-
                 return "";
-
             }
 
             string htmlBody = HtmlTemplates.GetPreRegisterTemplate();
 
-            return string.Format(htmlBody, Name, CodeAccess, CodeIV);
+            return string.Format(htmlBody, Name, CodeAccess);
         }
     }
 

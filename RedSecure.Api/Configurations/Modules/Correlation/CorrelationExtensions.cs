@@ -1,4 +1,6 @@
-﻿namespace RedSecure.Api.Configurations.Modules.Correlation
+﻿using RedSecure.Infrastructure.Correlation;
+
+namespace RedSecure.Api.Configurations.Modules.Correlation
 {
     public static class CorrelationExtensions
     {
