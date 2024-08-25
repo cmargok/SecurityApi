@@ -1,18 +1,10 @@
-﻿using Azure.Core;
-using Azure;
-using Microsoft.Extensions.Logging;
-using Security.Application.InfrastructureContracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+using System.Text;
 
 namespace Security.Infrastructure.Externals.Notifications
 {
-    public class NotificationsApi : INotificationsApi
+    public class NotificationsApi 
     {
         public EmailSettings emailSettings { get; }
 

@@ -21,7 +21,7 @@ namespace RedSecure.Domain.Entities
         [Column("LastName")]
         public string LastName { get; set; } = string.Empty;
 
-        [Required]
+        [Required]  
         [StringLength(20)]
         [Column("UserName")]
         public string UserName { get; set; } = string.Empty;
@@ -45,5 +45,8 @@ namespace RedSecure.Domain.Entities
         [Column("UserRegistrationSecretCode")]
         public string UserRegistrationSecretCode { get; set; } = string.Empty;
     }
+
+   
+  
 }
 #nullable disable

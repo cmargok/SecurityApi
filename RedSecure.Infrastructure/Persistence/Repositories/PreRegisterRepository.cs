@@ -39,7 +39,8 @@ namespace RedSecure.Infrastructure.Persistence.Repositories
                 .Where(r => 
                     r.UserName == UserName 
                     && r.Email == Email 
-                    && r.UserRegistrationSecretCode == secretCode)
+                    && r.UserRegistrationSecretCode == secretCode
+                    && r.IsRegistered == false)
                 .Select(c => new PreRegister()
                 {
                     FirstName = c.FirstName,

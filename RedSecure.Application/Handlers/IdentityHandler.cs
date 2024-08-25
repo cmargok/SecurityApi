@@ -21,9 +21,8 @@ namespace RedSecure.Application.Handlers
             var result = await _userManager.CreateAsync(user, password);
 
             if (!result.Succeeded)
-            {
-                var errors = result.Errors.ToString();
-                return (false, errors)!;
+            {                
+                return (false, "there were some errores.")!;
             }
 
             await _userManager.AddToRoleAsync(user, "User");
@@ -39,13 +38,38 @@ namespace RedSecure.Application.Handlers
             if (exists != null)
                 return true;
 
-            var existsEmail = await _userManager.FindByEmailAsync(email);
+            var existsEmail = await GetUserAsync(email);
 
             if (existsEmail != null)
                 return true;
 
             return false;
         }
-    }
 
+        public async Task<ApiUser?> GetUserAsync(string userName)
+        {
+            return await _userManager.FindByNameAsync(userName);           
+        }
+
+        public async Task<List<string>> GetRolesAsync(ApiUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return roles.ToList();
+        }
+        public async Task<(bool status, string result)> LogInAsync(string user, string pass)
+        {           
+            var result = await _signInManager.PasswordSignInAsync(user, pass, false, false);
+
+            if (result.Succeeded)
+                return (true,"Success");
+
+            if (result.IsLockedOut)
+                return (false, "Blocked");
+
+            return (false, "sign in invalid");
+
+        }
+
+    }
 }

@@ -9,8 +9,8 @@ namespace RedSecure.Infrastructure.Persistence
     public class ApplicationDBContext : IdentityDbContext<ApiUser>
     {
         public DbSet<PreRegister> PreRegisters { get; set; }
+        public virtual DbSet<TokenLog> Tokens { get; set; }
 
-   
         public ApplicationDBContext(DbContextOptions options) : base(options)
         {
 

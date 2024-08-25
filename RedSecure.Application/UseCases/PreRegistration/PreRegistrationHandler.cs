@@ -4,6 +4,7 @@ using RedSecure.Application.Models.PreRegister;
 using RedSecure.Domain.Entities;
 using RedSecure.Domain.Templates;
 using RedSecure.Domain.Utils;
+using RedSecure.Domain.Utils.Constants;
 using RedSecure.Domain.Utils.Hash;
 
 namespace RedSecure.Application.UseCases.PreRegistration
@@ -25,14 +26,14 @@ namespace RedSecure.Application.UseCases.PreRegistration
             var exists = await _preRegisterRepository.CheckIfExistsAsync(registerRequest.Email, registerRequest.UserName, cancellationToken);
 
             if(exists)
-                return Response.Error(false, "Already pre-registered user", "User already exists in the platform.");
+                return Response.Error(false, Constants.ErrorMessages.UserExistsPreregister, Constants.ErrorMessages.UserExists);
 
             var preRegister = Map(registerRequest);           
 
             var added = await _preRegisterRepository.PreRegisterAsync(preRegister, cancellationToken);
 
             if(!added)
-                return Response.Error(false, "Pre-Rrgister was not possible", "There was a problem while saving the user.");
+                return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);
 
             return Response.Success(true);
 

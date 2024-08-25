@@ -21,7 +21,7 @@ namespace RedSecure.Api.Configurations.Modules.Persistence
             //   ,bv => bv.MigrationsAssembly(typeof(IdentityDBContext).Assembly.FullName)
             );
 
-            services.AddIdentity<ApiUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<ApiUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDBContext>()
                 .AddDefaultTokenProviders();
 
@@ -32,6 +32,7 @@ namespace RedSecure.Api.Configurations.Modules.Persistence
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IPreRegisterRepository, PreRegisterRepository>();
+            services.AddScoped<IAuditRepository, AuditRepository>();
 
             return services;
         }

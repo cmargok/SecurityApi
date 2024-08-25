@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Configurations\Modules\Correlation\" />
-    <Folder Include="Configurations\Modules\Authentication\" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ namespace RedSecure.Application.Models.Security
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
+        public DateTime? RegisterAt { get; set; }
 
     }
 }
