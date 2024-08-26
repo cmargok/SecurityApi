@@ -19,6 +19,12 @@ namespace RedSecure.Api.Controllers
             _preRegistrationHandler = preRecord;
         }
 
+        /// <summary>
+        /// Init the registration into the system
+        /// </summary>
+        /// <param name="preRegister"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("initRegistration")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]

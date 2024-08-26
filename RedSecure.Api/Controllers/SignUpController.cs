@@ -19,6 +19,12 @@ namespace RedSecure.Api.Controllers
             _signUpHandler = signUpHandler;
         }
 
+        /// <summary>
+        /// allows sing up to a new user with pre registration done
+        /// </summary>
+        /// <param name="signInRequest"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("signUp")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]

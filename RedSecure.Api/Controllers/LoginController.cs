@@ -20,6 +20,13 @@ namespace RedSecure.Api.Controllers
             _loginHandler = loginHandler;
         }
 
+
+        /// <summary>
+        /// Allows sign in or login into the system
+        /// </summary>
+        /// <param name="apiUserLoginDto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("signIn")]
         [ProducesResponseType(typeof(ApiResponse<AuthResponse>), StatusCodes.Status200OK)]
