@@ -5,17 +5,11 @@ namespace RedSecure.Api.Configurations.Filters.HelpersExtensions
     public static class GlobalValidationsExtensions
     {
 
-        /// <summary>
-        /// Take the keys (parameters) and their errors from a ModelStateDictionary Into A "Dictionary"(<string, object>)  
-        /// </summary>
-        /// <param name="modelState"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentExtensionsNullException"></exception>
         public static Dictionary<string, object> GetErrorsToDictionary(this ModelStateDictionary modelState)
         {
             try
             {
-                Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+                Dictionary<string, object> keyValuePairs = [];
                 if (modelState == null)
                 {
                     return null!;

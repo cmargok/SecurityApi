@@ -1,9 +1,7 @@
-﻿using RedSecure.Application.Models.NotifyEvent;
-
-namespace RedSecure.Application.Contracts.Infrastructure
+﻿namespace RedSecure.Application.Contracts.Infrastructure
 {
     public interface INotifyEventHandler
     {
-        Task SendEmailEvent(EmailToSendDto @event, CancellationToken cancellationToken = default);
+        public Task<bool> SendPreRegisterEmail(string emailTo, string name, string code, CancellationToken cancellationToken = default);
     }
 }

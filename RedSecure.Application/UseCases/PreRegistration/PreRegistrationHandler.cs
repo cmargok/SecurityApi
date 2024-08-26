@@ -13,11 +13,13 @@ namespace RedSecure.Application.UseCases.PreRegistration
     {
         private readonly IPreRegisterRepository _preRegisterRepository;
         private readonly IHashHandler _hashHandler;
+        private readonly INotifyEventHandler _notifyEventHandler;
 
-        public PreRegistrationHandler(IPreRegisterRepository preRegisterRepository, IHashHandler hashHandler)
+        public PreRegistrationHandler(IPreRegisterRepository preRegisterRepository, IHashHandler hashHandler, INotifyEventHandler notifyEventHandler)
         {
             _preRegisterRepository = preRegisterRepository;
             _hashHandler = hashHandler;
+            _notifyEventHandler = notifyEventHandler;
         }
 
         public async Task<ApiResponse<bool>> PreRegistrationAsync(PreRegisterDRequest registerRequest, CancellationToken cancellationToken = default)
@@ -30,8 +32,11 @@ namespace RedSecure.Application.UseCases.PreRegistration
             var preRegister = Map(registerRequest);           
 
             var added = await _preRegisterRepository.PreRegisterAsync(preRegister, cancellationToken);
-
             if(!added)
+                return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);
+
+            var eventSent = await _notifyEventHandler.SendPreRegisterEmail(preRegister.Email, preRegister.FirstName + " " + preRegister.LastName, preRegister.UserRegistrationSecretCode, cancellationToken);
+            if (!eventSent)
                 return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);
 
             return Response.Success(true);
@@ -53,17 +58,7 @@ namespace RedSecure.Application.UseCases.PreRegistration
    
        
 
-        private string LoadHtmlTemplate(string Name, string CodeAccess)
-        {
-            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(CodeAccess))
-            {
-                return "";
-            }
-
-            string htmlBody = HtmlTemplates.GetPreRegisterTemplate();
-
-            return string.Format(htmlBody, Name, CodeAccess);
-        }
+       
     }
 
 

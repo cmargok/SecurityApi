@@ -18,7 +18,7 @@
                                     <ul>
                                         <li><strong>Código de validación de ingreso:</strong>{1}</li>
                                     </ul>
-                                    <p>Gracias por tu tiempo.</p>
+                                    <p>Gracias por querer ser parte de nuestro cambio.</p>
                                     <p>Cmargok Security System.</p>
                                 </body>
 

@@ -4,9 +4,6 @@ namespace RedSecure.Application.Models.NotifyEvent
 {
     public record EmailToSendDto
     {
-        [EmailAddress]
-        public string EmailFrom { get; init; } = string.Empty;
-        public string DisplayName { get; init; } = string.Empty;
         public List<To> EmailsTo { get; init; } = [];
         public string Subject { get; init; } = string.Empty;
         public string Message { get; init; } = string.Empty;
