@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MassTransit;
+using System.ComponentModel.DataAnnotations;
 
 namespace RedSecure.Application.Models.NotifyEvent
 {
-    public record EmailToSendDto
+    [MessageUrn("email-event")]
+    public record EmailRequest
     {
         public List<To> EmailsTo { get; init; } = [];
         public string Subject { get; init; } = string.Empty;
@@ -10,12 +12,13 @@ namespace RedSecure.Application.Models.NotifyEvent
         public bool Html { get; init; }
         public string HtmlBody { get; init; } = string.Empty;
 
-        public record To
-        {
-            public string DisplayName { get; init; } = string.Empty;
+      
+    }
+    public record To
+    {
+        public string DisplayName { get; init; } = string.Empty;
 
-            [EmailAddress]
-            public string Email { get; init; } = string.Empty;
-        }
+        [EmailAddress]
+        public string Email { get; init; } = string.Empty;
     }
 }

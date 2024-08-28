@@ -2,27 +2,20 @@
 {
     public class HtmlTemplates
     {
-        private const string HtmlBody = @"<!DOCTYPE html>
-                                <html>
-
-                                <head>
-                                    <meta charset=""utf-8"">
-                                    <title>Correo de validación</title>
-                                </head>
-
-                                <body>
-                                    <p>Hola {0}, gracias por iniciar el registro en nuestra plataforma
-                                        <br> Te enviamos el código de validación de ingreso para
-                                        registrarte correctamente:
-                                    </p>
-                                    <ul>
-                                        <li><strong>Código de validación de ingreso:</strong>{1}</li>
-                                    </ul>
-                                    <p>Gracias por querer ser parte de nuestro cambio.</p>
-                                    <p>Cmargok Security System.</p>
-                                </body>
-
-                                </html>";
+        private const string HtmlBody =
+            "<!DOCTYPE html>" +
+            "<html>" +
+            "<head>" +
+            "<meta charset=\"utf-8\"><title>Validation Email</title>" +
+            "</head>" +
+            "<body" +
+            "><p>Hello <strong>{0}</strong>, thank you for starting the registration process on our platform" +
+            "<br> We are sending you the validation code needed to register correctly:</p>" +
+            "<ul><li>Validation code: <strong>{1}</strong></li></ul>" +
+            "<p>Thank you for wanting to be part of our change.</p>" +
+            "<p>Cmargok Security System.</p>" +
+            "</body>" +
+            "</html>";
 
         public static string GetPreRegisterTemplate()
         {

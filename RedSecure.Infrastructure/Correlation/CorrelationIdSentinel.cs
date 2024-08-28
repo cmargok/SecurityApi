@@ -11,10 +11,10 @@
     {
         private const string CorrelationIdHeader = "X-Correlation-Id";
 
-        private string _correlationId = Guid.NewGuid().ToString();
+        private string _correlationId = "";
 
         public string Get()
-            => _correlationId;
+            => _correlationId is "" ? Guid.NewGuid().ToString()  : _correlationId;
         public string GetHeaderName()
             => CorrelationIdHeader;
         public void Set(string correlationId)

@@ -2,7 +2,6 @@
 using RedSecure.Application.Contracts.UseCases;
 using RedSecure.Application.Models.PreRegister;
 using RedSecure.Domain.Entities;
-using RedSecure.Domain.Templates;
 using RedSecure.Domain.Utils;
 using RedSecure.Domain.Utils.Constants;
 using RedSecure.Domain.Utils.Hash;

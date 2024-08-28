@@ -10,7 +10,6 @@ using RedSecure.Api.Configurations.Modules.Swagger;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDomainDependencies();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplicationDependencies();

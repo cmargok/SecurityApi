@@ -6,12 +6,11 @@ using RedSecure.Infrastructure.Correlation;
 
 namespace RedSecure.Infrastructure.Events.Notifications
 {
-
     public class NotifyEventHandler : INotifyEventHandler
     {
         private readonly IPublishEndpoint _publisherEndpoint;
         private readonly ICorrelationIdSentinel _correlationIdSentinel;
-        private const string Subject = "Pre Registro - CmargokSystems";
+        private const string Subject = "Pre-Registration - CmargokSystems";
         public NotifyEventHandler(IPublishEndpoint publisherEndpoint, ICorrelationIdSentinel correlationIdSentinel)
         {
             _publisherEndpoint = publisherEndpoint;
@@ -24,7 +23,7 @@ namespace RedSecure.Infrastructure.Events.Notifications
             if (body is "")
                 return false;
 
-            var emailEvent = new EmailToSendDto()
+            var emailEvent = new EmailRequest()
             {
                 EmailsTo = [ new() { DisplayName = name, Email = emailTo }],
                 Subject = Subject,
@@ -39,9 +38,9 @@ namespace RedSecure.Infrastructure.Events.Notifications
 
        
 
-        private async Task SendEmailEvent(EmailToSendDto @event, CancellationToken cancellationToken = default)
+        private async Task SendEmailEvent(EmailRequest @event, CancellationToken cancellationToken = default)
         {
-            await _publisherEndpoint.Publish(@event, sendContext =>
+            await _publisherEndpoint.Publish<EmailRequest>(@event, sendContext =>
             {
                 sendContext.CorrelationId = Guid.Parse(_correlationIdSentinel.Get());
 

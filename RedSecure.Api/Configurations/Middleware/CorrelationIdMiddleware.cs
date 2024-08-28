@@ -1,5 +1,4 @@
-﻿using RedSecure.Api.Configurations.Modules.Correlation;
-using RedSecure.Infrastructure.Correlation;
+﻿using RedSecure.Infrastructure.Correlation;
 
 namespace RedSecure.Api.Configurations.Middleware
 {
@@ -15,7 +14,7 @@ namespace RedSecure.Api.Configurations.Middleware
         public async Task Invoke(HttpContext context, ICorrelationIdSentinel correlationIdSentinel)
         {
             var correlationId = GetCorrelationIdTrace(context, correlationIdSentinel);
-
+            context.Items[correlationIdSentinel.GetHeaderName()] = correlationId;
             AddToResponse(context, correlationIdSentinel.GetHeaderName(), correlationId);
 
             await _next(context);
@@ -37,7 +36,6 @@ namespace RedSecure.Api.Configurations.Middleware
         {
             context.Response.OnStarting(() =>
             {
-
                 context.Response.Headers.Append(HeaderName, new[] { correlationId });
                 return Task.CompletedTask;
             });
