@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using RedSecure.Application.Contracts.Infrastructure;
 using RedSecure.Application.Models.Security;
 using RedSecure.Infrastructure.Persistence;
@@ -11,14 +12,13 @@ namespace RedSecure.Api.Configurations.Modules.Persistence
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
         {
-
             services.AddDbContext<ApplicationDBContext>(
                  options =>
                  {
                      options.UseSqlServer(Environment.GetEnvironmentVariable("SecurityDb"));
-                 }
-                 
-            //   ,bv => bv.MigrationsAssembly(typeof(IdentityDBContext).Assembly.FullName)
+                     options.ConfigureWarnings(c => c.Ignore(RelationalEventId.PendingModelChangesWarning));
+                 }                 
+              //bv => bv.MigrationsAssembly(typeof(IdentityDBContext).Assembly.FullName)
             );
 
             services.AddIdentity<ApiUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)

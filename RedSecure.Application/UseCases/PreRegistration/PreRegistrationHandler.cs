@@ -4,6 +4,7 @@ using RedSecure.Application.Models.PreRegister;
 using RedSecure.Domain.Entities;
 using RedSecure.Domain.Utils;
 using RedSecure.Domain.Utils.Constants;
+using RedSecure.Domain.Utils.Cryptography;
 using RedSecure.Domain.Utils.Hash;
 
 namespace RedSecure.Application.UseCases.PreRegistration
@@ -11,14 +12,12 @@ namespace RedSecure.Application.UseCases.PreRegistration
     public class PreRegistrationHandler : IPreRegistrationHandler
     {
         private readonly IPreRegisterRepository _preRegisterRepository;
-        private readonly IHashHandler _hashHandler;
-        private readonly INotifyEventHandler _notifyEventHandler;
+     //   private readonly INotifyEventHandler _notifyEventHandler;
 
-        public PreRegistrationHandler(IPreRegisterRepository preRegisterRepository, IHashHandler hashHandler, INotifyEventHandler notifyEventHandler)
+        public PreRegistrationHandler(IPreRegisterRepository preRegisterRepository/*, INotifyEventHandler notifyEventHandler*/)
         {
             _preRegisterRepository = preRegisterRepository;
-            _hashHandler = hashHandler;
-            _notifyEventHandler = notifyEventHandler;
+     //       _notifyEventHandler = notifyEventHandler;
         }
 
         public async Task<ApiResponse<bool>> PreRegistrationAsync(PreRegisterDRequest registerRequest, CancellationToken cancellationToken = default)
@@ -34,15 +33,14 @@ namespace RedSecure.Application.UseCases.PreRegistration
             if(!added)
                 return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);
 
-            var eventSent = await _notifyEventHandler.SendPreRegisterEmail(preRegister.Email, preRegister.FirstName + " " + preRegister.LastName, preRegister.UserRegistrationSecretCode, cancellationToken);
+           /* var eventSent = await _notifyEventHandler.SendPreRegisterEmail(preRegister.Email, preRegister.FirstName + " " + preRegister.LastName, preRegister.UserRegistrationSecretCode, cancellationToken);
             if (!eventSent)
-                return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);
+                return Response.Error(false, Constants.ErrorMessages.PreregisterNotPossible);*/
 
             return Response.Success(true);
-
         }
        
-        private PreRegister Map(PreRegisterDRequest dto)
+        private static PreRegister Map(PreRegisterDRequest dto)
         {
             return new()
             {
@@ -51,16 +49,9 @@ namespace RedSecure.Application.UseCases.PreRegistration
                 LastName = dto.LastName,
                 UserName = dto.UserName,
                 PhoneNumber = dto.PhoneNumber,
-                UserRegistrationSecretCode = _hashHandler.HashSecret(dto.UserName + dto.Email)
+                UserRegistrationSecretCode = CryptoService.HashUsername(dto.UserName + dto.Email)[..32],
+                HashUserName = CryptoService.HashUsername(dto.UserName),
             };
-        }
-   
-       
-
-       
+        }       
     }
-
-
-
-
 }

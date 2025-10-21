@@ -26,6 +26,10 @@ namespace RedSecure.Domain.Entities
         [Column("UserName")]
         public string UserName { get; set; } = string.Empty;
 
+        [Required]
+        [Column("HashUserName")]
+        public string HashUserName { get; set; } = string.Empty;
+
         [StringLength(12)]
         [Column("PhoneNumber")]
         public string PhoneNumber { get; set; } = string.Empty;

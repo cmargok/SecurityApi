@@ -24,11 +24,9 @@ namespace RedSecure.Api.Configurations.Modules.Injection
         }
 
         public static IServiceCollection AddDomainDependencies(this IServiceCollection services)
-        {
-      
+        {      
             services.AddScoped<IHashHandler, HashHandler>();
             return services;
         }
-
     }
 }

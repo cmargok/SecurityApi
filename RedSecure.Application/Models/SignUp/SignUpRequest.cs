@@ -15,4 +15,6 @@ namespace RedSecure.Application.Models.SignUp
         public string Username { get; set; } = string.Empty;
 
     }
+
+
 }

@@ -4,7 +4,6 @@ namespace RedSecure.Api.Configurations.Filters.HelpersExtensions
 {
     public static class GlobalValidationsExtensions
     {
-
         public static Dictionary<string, object> GetErrorsToDictionary(this ModelStateDictionary modelState)
         {
             try
@@ -37,6 +36,5 @@ namespace RedSecure.Api.Configurations.Filters.HelpersExtensions
             }
 
         }
-
     }
 }

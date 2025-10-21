@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Options;
 using RedSecure.Application.Models.Security;
 using RedSecure.Domain.Entities;
 using RedSecure.Infrastructure.Persistence.Configurations.Security;
@@ -17,7 +19,8 @@ namespace RedSecure.Infrastructure.Persistence
         }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer("Server = CMARGOK\\SQLEXPRESS; Database = CmargokSecurityApiDB; Persist Security Info = True; Trusted_Connection = True; MultipleActiveResultSets = True; TrustServerCertificate = true; ");
+        //    optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=CmargokSecurityApiDB; Persist Security Info=True; User ID=sa;Password=Dikelu0102@1; MultipleActiveResultSets=True; TrustServerCertificate=true; Encrypt=True;");
+        //     optionsBuilder.ConfigureWarnings(c => c.Ignore(RelationalEventId.PendingModelChangesWarning));
         //}
 
 

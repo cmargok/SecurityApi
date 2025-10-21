@@ -6,7 +6,6 @@ namespace RedSecure.Api.Configurations.Modules.Authentication
 {
     public static class AuthExtensions
     {
-
         public static IServiceCollection AddJwt(this IServiceCollection services)
         {
             AddClientOptions<JwtSettings>(services, "JwtSettings");

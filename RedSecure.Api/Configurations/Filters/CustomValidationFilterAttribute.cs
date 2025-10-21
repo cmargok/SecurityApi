@@ -7,10 +7,8 @@ namespace RedSecure.Api.Configurations.Filters
 {
     public class CustomValidationFilterAttribute : ActionFilterAttribute
     {
-
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-
             ApiResponse<Dictionary<string, object>> response = new()
             {
                 Error = true,

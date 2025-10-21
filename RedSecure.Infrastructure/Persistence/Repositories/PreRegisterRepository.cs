@@ -26,10 +26,7 @@ namespace RedSecure.Infrastructure.Persistence.Repositories
 
             var result = await _dbContext.SaveChangesAsync(cancellationToken);
 
-            if (result is 1)
-                return true;
-
-            return false;
+            return result is 1;
         }
 
 
@@ -46,6 +43,7 @@ namespace RedSecure.Infrastructure.Persistence.Repositories
                     FirstName = c.FirstName,
                     LastName = c.LastName,
                     PhoneNumber = c.PhoneNumber,
+                    HashUserName = c.HashUserName,
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);

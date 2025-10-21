@@ -6,6 +6,7 @@ using RedSecure.Application.Models.SignUp;
 using RedSecure.Domain.Entities;
 using RedSecure.Domain.Utils;
 using RedSecure.Domain.Utils.Constants;
+using RedSecure.Domain.Utils.Cryptography;
 
 namespace RedSecure.Application.UseCases.SignUp
 {
@@ -29,7 +30,9 @@ namespace RedSecure.Application.UseCases.SignUp
             if (userData is null)
                 return Response.Error(false, Constants.ErrorMessages.ErrorGeneral, Constants.ErrorMessages.UserNotFound);
 
-            var isCreated = await _identityHandler.CreateAsync(Map(signUpRequest, userData), signUpRequest.Password);
+            var newUser = Map(signUpRequest, userData);
+
+            var isCreated = await _identityHandler.CreateAsync(newUser, newUser.PasswordHash!);
 
             if (!isCreated.created)
                 return Response.Error(false, Constants.ErrorMessages.ErrorGeneral, isCreated.errors);
@@ -39,14 +42,19 @@ namespace RedSecure.Application.UseCases.SignUp
 
         private static ApiUser Map(SignUpRequest signUpRequest, PreRegister preRegister)
         {
+            var (pass, salt) = CryptoService.HashPassword(signUpRequest.Password);
+
             return new ApiUser()
             {
                 RegisterAt = DateTime.UtcNow,
-                UserName = signUpRequest.Username,
+                UserName = preRegister.HashUserName,
                 Email = signUpRequest.Email,
                 FirstName = preRegister.FirstName,
                 LastName = preRegister.LastName,
                 PhoneNumber = preRegister.PhoneNumber,
+                NoHashedUserName = signUpRequest.Username,
+                UserSalt = salt,
+                PasswordHash = pass,
             };
         }
 

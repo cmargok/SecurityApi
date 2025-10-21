@@ -12,7 +12,7 @@ namespace RedSecure.Application.Models.Login
 
         [Required]
         [PasswordPolicy]
-        [StringLength(15, ErrorMessage = "Your password is limited from {2} to {1} characters", MinimumLength = 6)]
+        [MinLength(6)]
         public required string Password { get; set; }
 
     }
